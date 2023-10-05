@@ -14,11 +14,27 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->integer('user_type')->default(3);//1-admin 2-teacher 3-student 4-parnet	
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            $table->string('last_name');
+            $table->integer('status')->default(0); // 0:active && 1:Non
+            $table->string('admission_number', 50)->nullable();
+            $table->integer('roll_number')->nullable() ;
+            $table->integer('class_id')->nullable() ;
+            $table->string('gender', 50)->nullable() ;
+            $table->date('date_of_birth')->nullable() ;
+            $table->string('caste', 50)->nullable() ;
+            $table->string('religion', 50)->nullable() ;
+            $table->string('mobile_number', 15)->nullable();
+            $table->date('admissio_date')->nullable() ;
+            $table->string('profile_picture', 100)->nullable() ;
+            $table->string('weight', 10)->nullable() ;
+            $table->string('height', 10)->nullable() ;
+            $table->string('blood_group', 10)->nullable() ;
         });
     }
 

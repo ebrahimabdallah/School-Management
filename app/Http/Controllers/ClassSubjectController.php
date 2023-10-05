@@ -21,14 +21,15 @@ class ClassSubjectController extends Controller
     {
         $data['getClass'] = ClassModel::getClass();
         $data['getSubject'] = Subject::getSubject();
-        $data['header_title'] = 'New Subject Assign ';
+        $data['header_title'] = 'New Subject Assign';
         return view('admin/assign_subject/add', $data);
     }
+
     public function insert(Request $request)
     {
         if (!empty($request->subject_id)) {
             foreach ($request->subject_id as $subject_id) {
-                $getAlreadyFirst = classSubjectModel::getAlreadyFirst($request->subject_id, $subject_id);
+                $getAlreadyFirst = classSubjectModel::getAlreadyFirst($request->class_id, $subject_id);
                 if (!empty($getAlreadyFirst)) {
                     $getAlreadyFirst->status = $request->status;
                     $getAlreadyFirst->save();
@@ -41,13 +42,14 @@ class ClassSubjectController extends Controller
                     $save->save();
                 }
             }
-            return redirect('assign/list')->with('success', 'Sucessfully');
+            return redirect('assign/list')->with('success', 'Successfully');
         } else {
             return redirect()
                 ->back()
                 ->with('error', 'Try Again Exist Some Error');
         }
     }
+
     public function edit($id)
     {
         $getRecord = classSubjectModel::getClassSubject($id);
@@ -56,7 +58,7 @@ class ClassSubjectController extends Controller
             $data['getAssignSubjectID'] = classSubjectModel::getAssignSubjectID($getRecord->class_id);
             $data['getClass'] = ClassModel::getClass();
             $data['getSubject'] = Subject::getSubject();
-            $date['header_title'] = 'Edit Assign Subject';
+            $data['header_title'] = 'Edit Assign Subject';
 
             return view('admin/assign_subject/edit', $data);
         } else {
@@ -64,9 +66,24 @@ class ClassSubjectController extends Controller
         }
     }
 
-    public function update( Request $request)
+    public function singleEdit($id)
     {
-        classSubjectModel::delteSubject($request->class_id);
+        $getRecord = classSubjectModel::getClassSubject($id);
+        if (!empty($getRecord)) {
+            $data['getRecord'] = $getRecord;
+            $data['getClass'] = ClassModel::getClass();
+            $data['getSubject'] = Subject::getSubject();
+            $data['header_title'] = 'Edit Assign Subject';
+
+            return view('admin/assign_subject/single-edit', $data);
+        } else {
+            abort(404);
+        }
+    }
+
+    public function update(Request $request)
+    {
+        classSubjectModel::deleteSubject($request->class_id);
         if (!empty($request->subject_id)) {
             foreach ($request->subject_id as $subject_id) {
                 $getAlreadyFirst = classSubjectModel::getAlreadyFirst($request->class_id, $subject_id);
@@ -83,7 +100,7 @@ class ClassSubjectController extends Controller
                 }
             }
         }
-        return redirect('assign/list')->with('success', 'Sucessfully');
+        return redirect('assign/list')->with('success', 'Successfully');
     }
 
     public function deleteSubClass($id)
@@ -93,4 +110,23 @@ class ClassSubjectController extends Controller
         $save->save();
         return redirect('assign/list')->with('success', 'Delete Successfully');
     }
+
+    public function singleUpdate($id, Request $request)
+    {
+        $getAlreadyFirst = classSubjectModel::getAlreadyFirst( $request->class_id,$request->subject_id);
+        
+        if (!empty($getAlreadyFirst)) {
+            $getAlreadyFirst->status = $request->status;
+            $getAlreadyFirst->save();
+            return redirect('assign/list')->with('success', 'Status Successfully Updated');
+        } else {
+            $save = classSubjectModel::getClassSubject($id);
+            $save->class_id = $request->class_id;
+            $save->subject_id = $request->subject_id;
+            $save->status = $request->status;
+            $save->save();
+        
+        return redirect('assign/list')->with('success', 'Subject Successfully');
+    }
+}
 }

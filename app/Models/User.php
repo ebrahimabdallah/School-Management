@@ -48,6 +48,33 @@ class User extends Authenticatable
     {
         return User::where('email','=',$email)->first();
     } 
+    
+    //Student
+    static function getStudent()
+    {
+        $return=  self::select('users.*', 'class.name as class_name')
+        ->leftJoin('class', 'class.id', '=', 'users.class_id')
+        ->where('users.user_type', '=', 3)
+        ->where('users.is_delete', '=', 0)
+        ->orderBy('users.id', 'desc')
+        ->paginate(10);
+        return $return;
+    } 
+
+    public function getProfile()
+    {
+       if(!empty($this->profile_picture)&& file_exists('upload/profile/'.$this->profile_picture))
+    {
+        return url('upload/profile/'.$this->profile_picture);
+    }
+    else{
+        return "";
+    }
+    } 
+
+
+    
+
 
     static function getAdmin()
     {
@@ -73,10 +100,12 @@ class User extends Authenticatable
         $return=$return->orderby('id','desc')->Paginate(4);
         return $return;
     } 
+
       //End  filter search as admin 
 
 static function getSingle($id)
     {
         return self::find($id);
     } 
+     
 }

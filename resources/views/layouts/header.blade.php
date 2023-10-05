@@ -159,10 +159,28 @@
           </li>
 
           <li class="nav-item">
+            <a href="{{url('admin/student/list')}}"    class="nav-link @if (Request::segment(2)=='student') active @endif"""">
+              <i class="nav-icon far fa-user"></i>
+              <p>
+                Students
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
             <a href="{{url('subject/list')}}"  class="nav-link @if (Request::segment(2)=='subject') active @endif" ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
            Subjects 
+               </p>
+            </a>
+          </li>
+
+            <li class="nav-item">
+            <a href="{{url('profile/change-password')}}"  class="nav-link @if (Request::segment(2)=='Passwprd') active @endif" ">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+           Change Password
                </p>
             </a>
           </li>
@@ -197,7 +215,15 @@
           </li>
            
 
-          
+          <li class="nav-item">
+            <a href="{{url('profile/change-password')}}"  class="nav-link @if (Request::segment(2)=='Passwprd') active @endif" ">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+           Change Password
+               </p>
+            </a>
+          </li>
+
           @elseif(Auth::user()->user_type==3)
          
           <li class="nav-item">
@@ -217,7 +243,15 @@
                </p>
             </a>
           </li>
-       
+          <li class="nav-item">
+            <a href="{{url('profile/change-password')}}"  class="nav-link @if (Request::segment(2)=='Passwprd') active @endif" ">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+           Change Password
+               </p>
+            </a>
+          </li>
+
           
           @elseif(Auth::user()->user_type==4)
           <li class="nav-item">
@@ -236,6 +270,16 @@
                </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{url('profile/change-password')}}"  class="nav-link @if (Request::segment(2)=='passwprd') active @endif" ">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+           Change Password
+               </p>
+            </a>
+          </li>
+
+
           @endif
           <li class="nav-item">
             <a href="{{url('logout')}}" class="nav-link @if (Request::segment(2)=='logout') active @endif">
