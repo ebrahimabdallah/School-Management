@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('type');
             $table->integer('created_by');
 
-            $table->integer('is_delete')->default('0'); //0-->active  && 1 --> inactive;
+            $table->integer('is_delete')->default('0'); //0-->not delete  && 1 --> delete
 
         });
     }

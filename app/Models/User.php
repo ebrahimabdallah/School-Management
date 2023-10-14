@@ -7,7 +7,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Facades\Request as FacadesRequest;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\Request;
 class User extends Authenticatable
@@ -49,14 +48,87 @@ class User extends Authenticatable
         return User::where('email','=',$email)->first();
     } 
     
-    //Student
+    static function getPerant()
+    {
+      $return=  self::select('users.*' )
+       ->where('users.user_type', '=', 4)
+      ->where('users.is_delete', '=', 0);
+    if(!empty(Request::get('name')))
+    {
+      $return=$return->where('name','like','%'.Request::get('name').'%'); 
+    }
+      $return=$return->orderBy('id', 'desc')
+      ->paginate(10);
+      return $return;
+    }
+
+    static function getTeacher()
+    {
+      $return=  self::select('users.*' )
+      ->where('users.user_type', '=', 2)
+     ->where('users.is_delete', '=', 0);
+     if(!empty(Request::get('name')))
+     {
+        $return=$return->where('name','like','%'.Request::get('name').'%');
+     }
+
+     if(!empty(Request::get('martial_status')))
+     {
+        $return=$return->where('martial_status','like','%'.Request::get('martial_status').'%');
+     }
+
+     if(!empty(Request::get('Qualification')))
+     {
+        $return=$return->where('Qualification','=',Request::get('Qualification'));
+     }
+
+     $return=$return->orderBy('id', 'desc')
+     ->paginate(10);
+     
+     return $return;
+    }
+
+
+
+   static public function getMyStudent($parent_id)
+   {
+    $return =self::select('users.*','class.name as class_name','parent.name as parent_name')
+    ->join('users as parent' ,'parent.id','=','users.parent_id','left')
+    ->join('class','class.id','=','users.class_id','left')
+    ->where('users.is_delete','=',0)
+    ->where('users.user_type','=',3)
+    ->where('users.parent_id','=',$parent_id)
+    ->orderBy('users.id','desc')->get();
+    return $return ;
+
+   }
+
     static function getStudent()
     {
-        $return=  self::select('users.*', 'class.name as class_name')
+        $return=  self::select('users.*', 'class.name as class_name','parent.name as parent_name','parent.last_name as parent_last_name')
+        ->join('users as parent' ,'parent.id','=','users.parent_id','left')
         ->leftJoin('class', 'class.id', '=', 'users.class_id')
         ->where('users.user_type', '=', 3)
-        ->where('users.is_delete', '=', 0)
-        ->orderBy('users.id', 'desc')
+        ->where('users.is_delete', '=', 0);
+      
+      
+        if(!empty(Request::get('name')))
+      {
+        $return=$return->where('name','like','%'.Request::get('name').'%');
+      }
+
+      if(!empty(Request::get('blood_group')))
+      {
+        $return=$return->where('blood_group','like','%'.Request::get('blood_group').'%');
+
+      }
+      if(!empty(Request::get('class')))
+      {
+        $return=$return->where('class.name','like','%'.Request::get('class').'%');
+
+      }
+
+        $return=$return->orderBy('users.id', 'desc')
         ->paginate(10);
         return $return;
     } 
@@ -73,7 +145,43 @@ class User extends Authenticatable
     } 
 
 
-    
+static public function getSearchStudent()
+{
+  if(!empty(Request::get('id'))||!empty(Request::get('last_name'))||!empty(Request::get('email'))||!empty(Request::get('name')))
+{
+  $return= self::select('users.*','class.name as class_name','parent.name as parent_name')
+  ->join('users as parent','parent.id','=','users.parent_id','left')
+  ->join('class','class.id','=','users.class_id','left')
+  ->where('users.user_type','=',3)
+  ->where('users.is_delete','=',0);
+ 
+ 
+ 
+  if(!empty(Request::get('id')))
+  {
+     $return=$return->where('users.id','like','%'.Request::get('id').'%');
+  }
+  if(!empty(Request::get('name')))
+  {
+     $return=$return->where('users.name','like','%'.Request::get('name').'%');
+  }
+
+  if(!empty(Request::get('email')))
+  {
+     $return=$return->where('users.email','like','%'.Request::get('email').'%');
+  }
+
+  if(!empty(Request::get('last_name')))
+  {
+     $return=$return->whereDate('users.last_name','=',Request::get('last_name'));
+  }
+
+  $return=$return->orderby('users.id','desc')
+  ->limit(50)
+  ->get();
+  return $return;
+}
+}    
 
 
     static function getAdmin()
@@ -109,3 +217,4 @@ static function getSingle($id)
     } 
      
 }
+ 

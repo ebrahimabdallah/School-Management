@@ -99,6 +99,7 @@ class StudentController extends Controller
         $student->gender = $request->gender;
         $student->class_id = $request->class_id;
         $student->religion = $request->religion;
+        $student->roll_number = $request->roll_number;
 
         if (!empty($request->date_of_birth)) {
             $student->date_of_birth = $request->date_of_birth;
@@ -112,7 +113,7 @@ class StudentController extends Controller
             $student->admission_date = $request->admission_date;
         }
 
-        // Image save
+        // Image update
         if ($request->hasFile('profile_picture')) {
             if (!empty($student->profile_picture)) {
                 File::delete('upload/profile/' . $student->profile_picture);

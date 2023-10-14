@@ -30,7 +30,8 @@
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label>Old Password</label>
-                                            <input type="password" name="oldPassword" class="form-control"
+                                            <input type="password" name="oldPassword"
+                                                                                        class="form-control"
                                                 placeholder="Your Old Password">
                                         </div>
                                         <div class="form-group">

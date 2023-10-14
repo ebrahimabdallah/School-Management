@@ -16,7 +16,7 @@
                             </div>
                             <div class="col-sm-12">
                                 <ol class="breadcrumb float-sm-right">
-                                    <a href="{{ url('admin/student/list') }}" class="btn btn-primary">Student</a>
+                                    <a href="{{ url('admin/parent/list') }}" class="btn btn-primary">Parent</a>
                                 </ol>
                             </div>
                         </div>
@@ -32,7 +32,7 @@
 
                                 <div class="card card-primary">
                                     <div class="card-header">
-                                        <h3 class="card-title">Edit Student</h3>
+                                        <h3 class="card-title">Edit Parent</h3>
                                     </div>
 
                                     <form action="" method="post" enctype="multipart/form-data">
@@ -60,8 +60,7 @@
                                                     <label for="email">Email</label>
                                                     <input type="email" class="form-control" id="email" name="email"
                                                         placeholder="Enter email" value="{{ old('email',$getRecord->email) }}">
-                                                    <div style="color: red">{{ $errors->first('email') }}</div>
-
+ 
                                                 </div>
 
 
@@ -71,8 +70,7 @@
                                                     <input type="text" name="admission_number" class="form-control"
                                                         placeholder="admission Number"
                                                         value="{{ old('admission_number',$getRecord->admission_number) }}">
-                                                    <div style="color: red">{{ $errors->first('admission_number') }}</div>
-
+ 
                                                 </div>
 
 
@@ -80,8 +78,7 @@
                                                     <label>Roll Number</label>
                                                     <input type="number" name="roll_number" class="form-control"
                                                         placeholder="Roll Number" value="{{ old('roll_number',$getRecord->roll_number) }}">
-                                                    <div style="color: red">{{ $errors->first('roll_number') }}</div>
-
+ 
                                                 </div>
 
                                                 <div class="form-group col-md-6">
@@ -91,15 +88,7 @@
                                                     <div style="color: red">{{ $errors->first('mobile_number') }}</div>
 
                                                 </div>
-                                                <div class="form-group col-md-6">
-                                                    <label>Profile Picture</label>
-                                                    <input type="file" name="profile_picture" class="form-control"
-                                                        placeholder="Profile Picture">
-                                                        @if(!empty($getRecord->getProfile()))
-                                                        <img src="{{$getRecord->getProfile()}}" 
-                                                       style="height: :100px; width:100px;">
-                                                       @endif
-                                                </div>
+                                               
 
                                                 <div class="form-group col-md-6">
                                                     <label>Gender</label>
@@ -121,23 +110,17 @@
                                                         <option {{ old('status' == 1) ? 'selected' : '' }} value="1">
                                                             Inactive</option>
                                                     </select>
-                                                </div>
-
-                                                <div class="form-group col-md-6">
-                                                    <label>Selected Class</label>
-
-                                                    <select name="class_id" class="form-control">
-                                                        <option value="">Select Class</option>
-                                                        @foreach ($getClass as $class)
-                                                            <option {{
-                                                             ($getRecord->class_id==$class->id) ?
-                                                             'selected' : '' 
-                                                             }}
-                                                                value="{{ $class->id }}">{{ $class->name }}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
                                                 </div> 
+                                                <div class="form-group col-md-6">
+                                                    <label>Profile Picture</label>
+                                                    <input type="file" name="profile_picture" class="form-control"
+                                                        placeholder="Profile Picture">
+                                                        @if(!empty($getRecord->getProfile()))
+                                                        <img src="{{$getRecord->getProfile()}}" 
+                                                       style="height: :100px; width:100px;">
+                                                       @endif
+                                                </div>
+                                               
 
                                                 <div class="form-group col-md-6">
                                                     <label>Date Of Birth</label>
@@ -158,6 +141,16 @@
                                                     <input type="text" name="caste" class="form-control"
                                                         placeholder="Caste" value="{{ old('caste',$getRecord->caste) }}">
                                                 </div>
+                                                <div class="form-group col-md-6">
+                                                    <label>job</label>
+                                                    <input type="text" name="job" class="form-control"
+                                                        placeholder="job" value="{{ old('job',$getRecord->job) }}">
+                                                </div>   
+                                                 <div class="form-group col-md-6">
+                                                    <label>Address</label>
+                                                    <input type="text" name="address" class="form-control"
+                                                        placeholder="address" value="{{ old('address',$getRecord->address) }}">
+                                                </div>
 
                                                 <div class="form-group col-md-6">
                                                     <label>Religion</label>
@@ -167,27 +160,7 @@
 
 
 
-                                                <div class="form-group col-md-6">
-                                                    <label>Blood Group</label>
-                                                    <input type="text" name="blood_group" class="form-control"
-                                                        placeholder="Blood Group" value="{{ old('blood_group',$getRecord->blood_group) }}">
-                                                </div>
-
-                                                <div class="form-group col-md-6">
-                                                    <label>Height</label>
-                                                    <input type="text" name="height" class="form-control"
-                                                        placeholder="Height" value="{{ old('height',$getRecord->height) }}">
-                                                    <div style="color: red">{{ $errors->first('height') }}</div>
-
-                                                </div>
-                                                <div class="form-group col-md-6">
-                                                    <label>weight</label>
-                                                    <input type="text" name="weight" class="form-control"
-                                                        placeholder="Weight" value="{{ old('weight',$getRecord->weight) }}">
-                                                    <div style="color: red">{{ $errors->first('weight') }}</div>
-
-                                                </div>
-
+                                          
 
 
                                             </div>

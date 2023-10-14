@@ -112,7 +112,7 @@
        <span class="brand-text font-weight-light">School Management</span>
     </a>
 
-    <!-- Sidebar -->
+     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
@@ -122,8 +122,20 @@
         <div class="info">
           <a href="#" class="d-block">{{auth()->user()->name}}</a>
         </div>
+      </div> 
+  <!-- Sidebar -->
+  {{-- <div class="sidebar">
+    <!-- Sidebar user panel (optional) -->
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <div class="image">
+        @if(!empty($getRecord->getProfile()))
+          <img src="{{$getRecord->getProfile()}}"  class="img-circle elevation-2" alt="User Image">
+        @endif
       </div>
-
+      <div class="info">
+        <a href="#" class="d-block">{{auth()->user()->name}}</a>
+      </div>
+    </div> --}}
      
 
       <!-- Sidebar Menu -->
@@ -163,6 +175,25 @@
               <i class="nav-icon far fa-user"></i>
               <p>
                 Students
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{url('admin/teacher/list')}}" class="nav-link @if (Request::segment(2)=='teacher') active @endif"""">
+              <i class="nav-icon far fa-user"></i>
+              <p>
+                Teacher
+              </p>
+            </a>
+          </li>
+
+          
+          <li class="nav-item">
+            <a href="{{url('admin/parent/list')}}" class="nav-link @if (Request::segment(2)=='parent') active @endif"""">
+              <i class="nav-icon far fa-user"></i>
+              <p>
+                Parent
               </p>
             </a>
           </li>
@@ -213,16 +244,27 @@
                </p>
             </a>
           </li>
-           
-
+        
           <li class="nav-item">
-            <a href="{{url('profile/change-password')}}"  class="nav-link @if (Request::segment(2)=='Passwprd') active @endif" ">
+            <a href="{{url('teacher/account')}}"  class="nav-link @if (Request::segment(2)=='account') active @endif">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+          My Account
+               </p>
+            </a>
+          </li>
+
+          
+          <li class="nav-item">
+            <a href="{{url('profile/change-password')}}"  class="nav-link @if (Request::segment(2)=='Passwprd') active @endif" >
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
            Change Password
                </p>
             </a>
           </li>
+
+        
 
           @elseif(Auth::user()->user_type==3)
          
@@ -243,6 +285,17 @@
                </p>
             </a>
           </li>
+         
+          <li class="nav-item">
+            <a href="{{url('student/account')}}" class="nav-link @if (Request::segment(2)=='student') active @endif">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+           My Account
+               </p>
+            </a>
+          </li>
+
+          
           <li class="nav-item">
             <a href="{{url('profile/change-password')}}"  class="nav-link @if (Request::segment(2)=='Passwprd') active @endif" ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -270,14 +323,7 @@
                </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="{{url('profile/change-password')}}"  class="nav-link @if (Request::segment(2)=='passwprd') active @endif" ">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-           Change Password
-               </p>
-            </a>
-          </li>
+          
 
 
           @endif

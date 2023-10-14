@@ -16,7 +16,7 @@
                             </div>
                             <div class="col-sm-12">
                                 <ol class="breadcrumb float-sm-right">
-                                    <a href="{{ url('admin/student/list') }}" class="btn btn-primary">Student</a>
+                                    <a href="{{ url('admin/teacher/list') }}" class="btn btn-primary">teacher</a>
                                 </ol>
                             </div>
                         </div>
@@ -32,7 +32,7 @@
 
                                 <div class="card card-primary">
                                     <div class="card-header">
-                                        <h3 class="card-title">Edit Student</h3>
+                                        <h3 class="card-title">Edit teacher</h3>
                                     </div>
 
                                     <form action="" method="post" enctype="multipart/form-data">
@@ -64,25 +64,7 @@
 
                                                 </div>
 
-
-
-                                                <div class="form-group col-md-6">
-                                                    <label>Admission Number</label>
-                                                    <input type="text" name="admission_number" class="form-control"
-                                                        placeholder="admission Number"
-                                                        value="{{ old('admission_number',$getRecord->admission_number) }}">
-                                                    <div style="color: red">{{ $errors->first('admission_number') }}</div>
-
-                                                </div>
-
-
-                                                <div class="form-group col-md-6">
-                                                    <label>Roll Number</label>
-                                                    <input type="number" name="roll_number" class="form-control"
-                                                        placeholder="Roll Number" value="{{ old('roll_number',$getRecord->roll_number) }}">
-                                                    <div style="color: red">{{ $errors->first('roll_number') }}</div>
-
-                                                </div>
+ 
 
                                                 <div class="form-group col-md-6">
                                                     <label>Mobile Number</label>
@@ -101,16 +83,7 @@
                                                        @endif
                                                 </div>
 
-                                                <div class="form-group col-md-6">
-                                                    <label>Gender</label>
-                                                    <select name="gender" class="form-control">
-                                                        <option value="">Select Gender</option>
-                                                        <option {{ old('gender' == 'male') ? 'selected' : '' }}value="male">Male
-                                                        </option>
-                                                        <option {{ old('gender' == 'female') ? 'selected' : '' }} value="female">
-                                                            Female</option>
-                                                    </select>
-                                                </div>
+                                               
 
                                                 <div class="form-group col-md-6">
                                                     <label>Status</label>
@@ -123,21 +96,7 @@
                                                     </select>
                                                 </div>
 
-                                                <div class="form-group col-md-6">
-                                                    <label>Selected Class</label>
-
-                                                    <select name="class_id" class="form-control">
-                                                        <option value="">Select Class</option>
-                                                        @foreach ($getClass as $class)
-                                                            <option {{
-                                                             ($getRecord->class_id==$class->id) ?
-                                                             'selected' : '' 
-                                                             }}
-                                                                value="{{ $class->id }}">{{ $class->name }}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
-                                                </div> 
+                                                
 
                                                 <div class="form-group col-md-6">
                                                     <label>Date Of Birth</label>
@@ -147,47 +106,44 @@
                                                 </div>
 
                                                 <div class="form-group col-md-6">
-                                                    <label>Admission Date</label>
+                                                    <label>joining Date</label>
                                                     <input type="date" name="admission_date" class="form-control"
                                                         placeholder="Admission Date" value="{{ old('admission_date',$getRecord->admission_date) }}">
 
                                                 </div>
 
-                                                <div class="form-group col-md-6">
-                                                    <label>Caste</label>
-                                                    <input type="text" name="caste" class="form-control"
-                                                        placeholder="Caste" value="{{ old('caste',$getRecord->caste) }}">
-                                                </div>
-
-                                                <div class="form-group col-md-6">
-                                                    <label>Religion</label>
-                                                    <input type="text" name="religion" class="form-control"
-                                                        placeholder="Religion" value="{{ old('religion',$getRecord->religion) }}">
-                                                </div>
+                                                
 
 
 
                                                 <div class="form-group col-md-6">
-                                                    <label>Blood Group</label>
-                                                    <input type="text" name="blood_group" class="form-control"
-                                                        placeholder="Blood Group" value="{{ old('blood_group',$getRecord->blood_group) }}">
+                                                    <label>Experience  </label>
+                                                    <input type="text" name="experience" class="form-control"
+                                                        placeholder="experience  " value="{{ old('experience',$getRecord->experience) }}">
                                                 </div>
 
                                                 <div class="form-group col-md-6">
-                                                    <label>Height</label>
-                                                    <input type="text" name="height" class="form-control"
-                                                        placeholder="Height" value="{{ old('height',$getRecord->height) }}">
-                                                    <div style="color: red">{{ $errors->first('height') }}</div>
+                                                    <label>Qualification</label>
+                                                    <input type="text" name="Qualification" class="form-control"
+                                                        placeholder="Qualification	" value="{{ old('Qualification	',$getRecord->Qualification) }}">
+                                                    <div style="color: red">{{ $errors->first('Qualification	') }}</div>
 
                                                 </div>
                                                 <div class="form-group col-md-6">
-                                                    <label>weight</label>
-                                                    <input type="text" name="weight" class="form-control"
-                                                        placeholder="Weight" value="{{ old('weight',$getRecord->weight) }}">
-                                                    <div style="color: red">{{ $errors->first('weight') }}</div>
+                                                    <label>Martial Status</label>
+                                                    <input type="text" name="martial_status" class="form-control"
+                                                        placeholder="martial_status" value="{{ old('martial_status',$getRecord->martial_status) }}">
+                                                    <div style="color: red">{{ $errors->first('martial_status') }}</div>
 
                                                 </div>
 
+                                                <div class="form-group col-md-6">
+                                                    <label>Current Address</label>
+                                                    <input type="text" name="address" class="form-control"
+                                                        placeholder="address" value="{{ old('address',$getRecord->address) }}">
+                                                    <div style="color: red">{{ $errors->first('address') }}</div>
+
+                                                </div>
 
 
                                             </div>

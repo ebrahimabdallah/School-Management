@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->integer('status');
             $table->integer('created_by');
-            $table->integer('is_delete');
+            $table->integer('is_delete')->default(0);
         });
     }
 

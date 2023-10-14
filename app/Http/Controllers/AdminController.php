@@ -10,6 +10,7 @@ class AdminController extends Controller
 {
     public function List()
     {
+        
         $data['getRecord'] = User::getAdmin(); //Scope to get Admin only from table [in model User]
         $data['header_title'] = 'Admin List';
         return view('admin/admin/list', $data);
