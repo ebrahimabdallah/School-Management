@@ -7,9 +7,10 @@
       <div class="content-wrapper">
       <section class="content-header">
          <div class="container-fluid">
-         <div class="row mb-2">
-         <div class="col-sm-6">
-            <h1>My Account</h1>
+            <div class="row mb-2">
+               <div class="col-sm-6">
+               </div>
+            </div>
          </div>
       </section>
       <section class="content">
@@ -19,7 +20,7 @@
                   @include('message')
                   <div class="card card-primary">
                      <div class="card-header">
-                        <h3 class="card-title">Edit MyProfile </h3>
+                        <h3 class="card-title">Edit MyProfile</h3>
                      </div>
                      <form action="" method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}
@@ -39,13 +40,32 @@
                                  <label for="email">Email</label>
                                  <input type="email" class="form-control" id="email" name="email"
                                     placeholder="Enter email" value="{{ old('email',$getRecord->email) }}">
-                                 <div style="color: red">{{ $errors->first('email') }}</div>
+                              </div>
+                              <div class="form-group col-md-6">
+                                 <label>Gender</label>
+                                 <select name="gender" class="form-control">
+                                    <option value="">Select Gender</option>
+                                    <option {{ old('gender' == 'male') ? 'selected' : '' }}value="male">Male
+                                    </option>
+                                    <option {{ old('gender' == 'female') ? 'selected' : '' }} value="female">
+                                    Female</option>
+                                 </select>
                               </div>
                               <div class="form-group col-md-6">
                                  <label>Mobile Number</label>
                                  <input type="number" name="mobile_number" class="form-control"
                                     placeholder="Mobile Number" value="{{ old('mobile_number',$getRecord->mobile_number) }}">
                                  <div style="color: red">{{ $errors->first('mobile_number') }}</div>
+                              </div>
+                              <div class="form-group col-md-6">
+                                 <label>Gender</label>
+                                 <select name="gender" class="form-control">
+                                    <option value="">Select Gender</option>
+                                    <option {{ old('gender' == 'male') ? 'selected' : '' }}value="male">Male
+                                    </option>
+                                    <option {{ old('gender' == 'female') ? 'selected' : '' }} value="female">
+                                    Female</option>
+                                 </select>
                               </div>
                               <div class="form-group col-md-6">
                                  <label>Profile Picture</label>
@@ -63,27 +83,19 @@
                                     value="{{ old('date_of_birth',$getRecord->date_of_birth) }}">
                               </div>
                               <div class="form-group col-md-6">
-                                 <label>Experience  </label>
-                                 <input type="text" name="experience" class="form-control"
-                                    placeholder="experience  " value="{{ old('experience',$getRecord->experience) }}">
+                                 <label>job</label>
+                                 <input type="text" name="job" class="form-control"
+                                    placeholder="job" value="{{ old('job',$getRecord->job) }}">
                               </div>
                               <div class="form-group col-md-6">
-                                 <label>Qualification</label>
-                                 <input type="text" name="Qualification" class="form-control"
-                                    placeholder="Qualification	" value="{{ old('Qualification	',$getRecord->Qualification) }}">
-                                 <div style="color: red">{{ $errors->first('Qualification	') }}</div>
-                              </div>
-                              <div class="form-group col-md-6">
-                                 <label>Martial Status</label>
-                                 <input type="text" name="martial_status" class="form-control"
-                                    placeholder="martial_status" value="{{ old('martial_status',$getRecord->martial_status) }}">
-                                 <div style="color: red">{{ $errors->first('martial_status') }}</div>
-                              </div>
-                              <div class="form-group col-md-6">
-                                 <label>Current Address</label>
+                                 <label>Address</label>
                                  <input type="text" name="address" class="form-control"
                                     placeholder="address" value="{{ old('address',$getRecord->address) }}">
-                                 <div style="color: red">{{ $errors->first('address') }}</div>
+                              </div>
+                              <div class="form-group col-md-6">
+                                 <label>Religion</label>
+                                 <input type="text" name="religion" class="form-control"
+                                    placeholder="Religion" value="{{ old('religion',$getRecord->religion) }}">
                               </div>
                            </div>
                            <div class="card-footer">

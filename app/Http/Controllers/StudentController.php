@@ -6,6 +6,8 @@ use App\Http\Requests\StudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
 use Illuminate\Support\Facades\File;
 use App\Models\ClassModel;
+use App\Models\classSubjectModel;
+use App\Models\Subject;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -144,4 +146,12 @@ class StudentController extends Controller
         return redirect('admin/student/list')->with('success', 'Successfully Deleted a Student.');
         
     }
+public function mySubject()
+{
+    
+    $data['getRecord'] = classSubjectModel::mySubject(Auth::user()->class_id);
+    $data['header_title'] = 'MyStudent';
+    return view('student/mySubject', $data);
+}
+
 }

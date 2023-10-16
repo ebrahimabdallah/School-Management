@@ -29,13 +29,73 @@ class UserController extends Controller
        }
       else if(Auth::user()->user_type == 3)
        {
-        return view('student/account',$data);
-    
+        return view('student/account',$data); 
+       }
+
+       else if(Auth::user()->user_type == 1)
+       {
+        return view('admin/admin/account',$data); 
+       }
+
+       else if(Auth::user()->user_type == 4)
+       {
+        return view('parent/account',$data); 
        }
     }
- 
+    public function EditAdminAccount(Request $request)
+    {
     
+        $id=Auth::user()->id;
+        $user = User::getSingle($id);
+        $user->name = trim($request->name);
+        $user->email = trim($request->email);
+       
+        $user->save();
+        return redirect('admin/admin/account')->with('success', 'Update a Account Successfully');
+
+    }
+    public function EditParentAccount(Request $request)
+    {
+
+        $id=Auth::user()->id;
+        $parent = User::getSingle($id);
+        $parent->name = trim($request->name);
+        $parent->gender = trim($request->gender);
+
+        $parent->last_name = trim($request->last_name);
+         $parent->email = trim($request->email);
+        $parent->job = trim($request->job);
+        $parent->address = trim($request->address);
+        //image update
+        if ($request->hasFile('profile_picture')) {
+            if (!empty($parent->profile_picture)) {
+                File::delete('upload/profile/' . $parent->profile_picture);
+            }
+            $image = $request->file('profile_picture');
+            $extension = strtolower($image->getClientOriginalExtension());
+            $randomString = Str::random(20);
+            $filename = $randomString . '.' . $extension;
+            $image->move('upload/profile/', $filename);
+            $parent->profile_picture = $filename;
+        }
+        
+        $parent->mobile_number = $request->mobile_number;
+         
+        $parent->religion = $request->religion;
+ 
+        if (!empty($request->date_of_birth)) {
+            $parent->date_of_birth = $request->date_of_birth;
+        }
+
+        
       
+
+        $parent->save();
+
+        return redirect('parent/account')->with('success', 'Updated a account successfully.');
+}
+ 
+
     public function editAccount(UpdateteacherRequest $request)
     {
         $id=Auth::user()->id;

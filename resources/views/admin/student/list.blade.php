@@ -120,7 +120,7 @@
                                                          <td>{{ $userValue->class_name }}</td>
                                                          <td>{{ $userValue->gender }}</td>
                                                          <td>{{ $userValue->caste }}</td>
-    {{($userValue->status==0)? 'Active' : 'InActive'}}
+                                                        </td>{{($userValue->status==0)? 'Active' : 'InActive'}}<td>
 
                                                          <td>{{ $userValue->religion }}</td>
                                                          <td>{{ $userValue->height }}</td>

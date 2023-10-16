@@ -100,7 +100,18 @@
                                                        style="height: :100px; width:100px;">
                                                        @endif
                                                 </div>
-
+                                                <div class="form-group">
+                                                    <label>Class Name</label>
+                                                    <select class="form-control" name="class_id" required>
+                                                        <option value="">Select Class</option>
+        
+                                                        @foreach ($getClass as $class)
+                                                            <option {{ ($getRecord->class_id==$class->id) ? 'selected' : '' }}
+                                                                value="{{ $class->id }}">{{ $class->name }}</option>
+                                                        @endforeach
+        
+                                                    </select>
+                                                </div>
                                                 <div class="form-group col-md-6">
                                                     <label>Gender</label>
                                                     <select name="gender" class="form-control">
