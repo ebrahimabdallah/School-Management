@@ -216,6 +216,24 @@
                  </p>
               </a>
            </li>
+         
+           <li class="nav-item">
+            <a href="{{url('admin/assign_teacher_class/list')}}"  class="nav-link @if (Request::segment(2)=='Teacher Class') active @endif" ">
+               <i class="nav-icon fas fa-tachometer-alt"></i>
+               <p>
+                  Assign Teacher Class 
+               </p>
+            </a>
+         </li>
+
+         <li class="nav-item">
+            <a href="{{url('admin/ClassTime/list')}}"  class="nav-link @if (Request::segment(2)=='ClassTime') active @endif" ">
+               <i class="nav-icon fas fa-tachometer-alt"></i>
+               <p>
+                  ClassTime
+               </p>
+            </a>
+         </li>
            @elseif(Auth::user()->user_type==2)
            <li class="nav-item">
               <a href="{{url('teacher/dashboard')}}"  class="nav-link @if (Request::segment(2)=='dashboard') active @endif"" >

@@ -2,10 +2,12 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\TeacherClassController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\classController;
 use App\Http\Controllers\ClassController as ControllersClassController;
 use App\Http\Controllers\ClassSubjectController;
+use App\Http\Controllers\ClassTimeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ParentController;
 use App\Http\Controllers\StudentController;
@@ -94,6 +96,20 @@ Route::get('admin/admin/list', function () {
     Route::get('admin/assign_subject/delete/{id}', [ClassSubjectController::class, 'deleteSubClass']);
     Route::get('admin/assign_subject/single-edit/{id}', [ClassSubjectController::class, 'singleEdit']);
     Route::post('admin/assign_subject/single-edit/{id}', [ClassSubjectController::class, 'singleUpdate']);
+   
+    //Assign Teacher Class
+
+    Route::get('admin/assign_teacher_class/list', [TeacherClassController::class, 'list']);
+    Route::get('admin/assign_teacher_class/add', [TeacherClassController::class, 'add']);
+    Route::post('admin/assign_teacher_class/add', [TeacherClassController::class, 'insert']);
+    Route::get('admin/assign_teacher_class/edit/{id}', [TeacherClassController::class, 'edit']);
+    Route::post('admin/assign_teacher_class/edit/{id}', [TeacherClassController::class, 'update']);
+    Route::get('admin/assign_teacher_class/delete/{id}', [TeacherClassController::class, 'delete']);
+ 
+//ClassTime
+Route::get('admin/ClassTime/list', [ClassTimeController::class, 'list']);
+
+
 
     //change password
     Route::get('profile/change-password', [UserController::class, 'ChangePassword']);

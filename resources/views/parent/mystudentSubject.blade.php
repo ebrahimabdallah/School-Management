@@ -1,4 +1,4 @@
-@extends('layouts.app')
+ @extends('layouts.app')
 @section('content')
 <div class="content-wrapper">
    <section class="content-header">
@@ -12,7 +12,7 @@
       </div>
       <!-- /.container-fluid -->
    </section>
-   <section class="content">
+   <section class="content"> 
       <div class="container-fluid">
          @include('message')
          <h1>Subjects Student <span style="color: rgb(12, 92, 240)">{{$getUser->name}}</span></h1>

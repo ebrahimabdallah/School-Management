@@ -88,7 +88,15 @@ class User extends Authenticatable
      return $return;
     }
 
-
+         static function getClassTeacher ()
+        {
+           $return=  self::select('users.*' )
+          ->where('users.user_type', '=', 2)
+         ->where('users.is_delete', '=', 0);
+         $return=$return->orderBy('id', 'desc')
+         ->get();
+         return $return;
+        }
 
    static public function getMyStudent($parent_id)
    {

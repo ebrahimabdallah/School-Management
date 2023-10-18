@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ClassModel;
 use App\Models\classSubjectModel;
 use App\Models\Subject;
+use App\Models\TeacherClass;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -68,13 +69,12 @@ class ClassSubjectController extends Controller
 
     public function singleEdit($id)
     {
-        $getRecord = classSubjectModel::getClassSubject($id);
+        $getRecord = classSubjectModel::singleClassTeacher($id);
         if (!empty($getRecord)) {
             $data['getRecord'] = $getRecord;
-            $data['getClass'] = ClassModel::getClass();
-            $data['getSubject'] = Subject::getSubject();
-            $data['header_title'] = 'Edit Assign Subject';
-
+        $data['getClass'] = ClassModel::getClass();
+        $data['getSubject'] = Subject::getSubject();
+        $data['header_title'] = 'Edit Assign Subject';
             return view('admin/assign_subject/single-edit', $data);
         } else {
             abort(404);

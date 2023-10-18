@@ -17,14 +17,13 @@ return new class extends Migration
             $table->integer('user_type')->default(3);//1-admin 2-teacher 3-student 4-parnet	
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password'); 
             $table->rememberToken();
             $table->timestamps();
             $table->string('last_name');
             $table->string('address');
             $table->integer('is_delete')->default(0);
             $table->integer('parent_id')->nullable();
-            
             $table->string('job');
             $table->integer('status')->default(0); // 0:active && 1:Non
             $table->string('admission_number', 50)->nullable();
