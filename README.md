@@ -1,6 +1,6 @@
 # Description
 
-# Feature 
+# Features 
 
 # Technology Used
 
