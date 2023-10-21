@@ -44,7 +44,7 @@ Route::get('admin/admin/list', function () {
     Route::get('student/edit/{id}', [StudentController::class, 'Edit']);
     Route::post('student/edit/{id}', [StudentController::class, 'Update']);
     Route::get('student/delete/{id}', [StudentController::class, 'Delete']);
-   
+
    //parent
    Route::get('admin/parent/add', [ParentController::class, 'Add']);
    Route::get('admin/parent/list', [ParentController::class, 'List']);
@@ -55,7 +55,7 @@ Route::get('admin/admin/list', function () {
    Route::get('admin/parent/mystudent/{id}', [ParentController::class, 'MyStudent']);
    Route::get('admin/parent/assign_student/{student_id}/{parent_id}', [ParentController::class, 'AssignStudentParent']);
    Route::get('admin/parent/assign_student_delete/{student_id}', [ParentController::class, 'assignMyStudentDelete']);
-  
+
 
    //Teacher
    Route::get('admin/teacher/add', [TeacherController::class, 'Add']);
@@ -64,7 +64,7 @@ Route::get('admin/admin/list', function () {
    Route::get('admin/teacher/edit/{id}', [TeacherController::class, 'Edit']);
    Route::post('admin/teacher/edit/{id}', [TeacherController::class, 'Update']);
    Route::get('admin/teacher/delete/{id}', [TeacherController::class, 'Delete']);
-   
+
 
    //account
    Route::get('admin/admin/account', [UserController::class, 'Account']);
@@ -96,7 +96,7 @@ Route::get('admin/admin/list', function () {
     Route::get('admin/assign_subject/delete/{id}', [ClassSubjectController::class, 'deleteSubClass']);
     Route::get('admin/assign_subject/single-edit/{id}', [ClassSubjectController::class, 'singleEdit']);
     Route::post('admin/assign_subject/single-edit/{id}', [ClassSubjectController::class, 'singleUpdate']);
-   
+
     //Assign Teacher Class
 
     Route::get('admin/assign_teacher_class/list', [TeacherClassController::class, 'list']);
@@ -105,9 +105,10 @@ Route::get('admin/admin/list', function () {
     Route::get('admin/assign_teacher_class/edit/{id}', [TeacherClassController::class, 'edit']);
     Route::post('admin/assign_teacher_class/edit/{id}', [TeacherClassController::class, 'update']);
     Route::get('admin/assign_teacher_class/delete/{id}', [TeacherClassController::class, 'delete']);
- 
+
 //ClassTime
 Route::get('admin/ClassTime/list', [ClassTimeController::class, 'list']);
+Route::post('admin/ClassTime/get_subject', [ClassTimeController::class, 'get_subject']);
 
 
 
@@ -125,7 +126,7 @@ Route::group(['middleware' => 'teacher'], function () {
    Route::get('teacher/account', [UserController::class, 'Account']);
    Route::post('teacher/account', [UserController::class, 'editAccount']);
 
- 
+
 });
 
 Route::group(['middleware' => 'student'], function () {
@@ -138,7 +139,7 @@ Route::group(['middleware' => 'student'], function () {
     Route::get('student/account', [UserController::class, 'Account']);
     Route::post('student/account', [UserController::class, 'EditStudentAccount']);
     Route::get('student/mySubject', [StudentController::class, 'mySubject']);
-    
+
 });
 
 Route::group(['middleware' => 'parent'], function () {
@@ -152,6 +153,6 @@ Route::group(['middleware' => 'parent'], function () {
     Route::post('parent/account', [UserController::class, 'EditParentAccount']);
     Route::get('parent/mystudent', [ParentController::class, 'getMyStudent']);
     Route::get('parent/mystudentSubject/{student_id}', [SubjectController::class, 'mystudentSubject']);
-    
-   
+
+
 });
