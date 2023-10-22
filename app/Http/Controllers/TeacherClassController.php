@@ -86,7 +86,7 @@ class TeacherClassController extends Controller
                 }
             }
         }
-        return redirect('admin/assign_teacher_class/list')->with('success', 'Successfully');    
+        return redirect('admin/assign_teacher_class/list')->with('success', 'Successfully');
     }
     public function delete($id)
     {
@@ -95,4 +95,20 @@ class TeacherClassController extends Controller
         $save->save();
         return redirect('admin/assign_teacher_class/list')->with('success', 'Delete Successfully');
     }
+
+//Class Related Teacher
+    public function myClassTeacher()
+{
+    $data['getRecord'] = TeacherClass::getTeacherClass(Auth::user()->id);
+    $data['header_title'] = "Teachers Subjects";
+    return view('teacher/myClass', $data);
+
+}
+//Students Related Teacher
+public function MyStudent()
+{
+    $data['getRecord'] = User::getTeacherStudents(Auth::user()->id);
+    $data['header_title'] = "Student";
+    return view('teacher/myStudents', $data);
+}
 }

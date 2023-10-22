@@ -5,7 +5,6 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TeacherClassController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\classController;
-use App\Http\Controllers\ClassController as ControllersClassController;
 use App\Http\Controllers\ClassSubjectController;
 use App\Http\Controllers\ClassTimeController;
 use App\Http\Controllers\DashboardController;
@@ -20,7 +19,9 @@ Route::post('/login', [AuthController::class, 'AuthLogin']);
 Route::get('/logout', [AuthController::class, 'AuthLogOut']);
 Route::get('/forgetPassword', [AuthController::class, 'AuthForgetPassword']);
 Route::post('/forgetPassword', [AuthController::class, 'PostForgetPassword']);
-
+  //change password
+  Route::get('profile/change-password', [UserController::class, 'ChangePassword']);
+  Route::post('profile/change-password', [UserController::class, 'UpdatePassword']);
 Route::get('admin/admin/list', function () {
     return view('admin.admin.list');
 });
@@ -109,45 +110,40 @@ Route::get('admin/admin/list', function () {
 //ClassTime
 Route::get('admin/ClassTime/list', [ClassTimeController::class, 'list']);
 Route::post('admin/ClassTime/get_subject', [ClassTimeController::class, 'get_subject']);
+Route::post('admin/ClassTime/insert', [ClassTimeController::class, 'insert']);
 
 
 
-    //change password
-    Route::get('profile/change-password', [UserController::class, 'ChangePassword']);
-    Route::post('profile/change-password', [UserController::class, 'UpdatePassword']);
 });
 
 Route::group(['middleware' => 'teacher'], function () {
     Route::get('teacher/dashboard', [DashboardController::class, 'dashboard']);
-   //change password
-   Route::get('profile/change-password', [UserController::class, 'ChangePassword']);
-   Route::post('profile/change-password', [UserController::class, 'UpdatePassword']);
+
   //account
    Route::get('teacher/account', [UserController::class, 'Account']);
    Route::post('teacher/account', [UserController::class, 'editAccount']);
-
+   Route::get('teacher/myClassTeacher', [TeacherClassController::class, 'myClassTeacher']);
+   Route::get('teacher/myStudent', [TeacherClassController::class, 'MyStudent']);
 
 });
 
 Route::group(['middleware' => 'student'], function () {
     Route::get('student/dashboard', [DashboardController::class, 'dashboard']);
 
-    //change password
-    Route::get('profile/change-password', [UserController::class, 'ChangePassword']);
-    Route::post('profile/change-password', [UserController::class, 'UpdatePassword']);
    //account
     Route::get('student/account', [UserController::class, 'Account']);
     Route::post('student/account', [UserController::class, 'EditStudentAccount']);
     Route::get('student/mySubject', [StudentController::class, 'mySubject']);
+
+    //time table
+    Route::get('student/MyClassTime', [ClassTimeController::class, 'MyClassTime']);
 
 });
 
 Route::group(['middleware' => 'parent'], function () {
     Route::get('parent/dashboard', [DashboardController::class, 'dashboard']);
 
-    //change password
-    Route::get('profile/change-password', [UserController::class, 'ChangePassword']);
-    Route::post('profile/change-password', [UserController::class, 'UpdatePassword']);
+
    //account
     Route::get('parent/account', [UserController::class, 'Account']);
     Route::post('parent/account', [UserController::class, 'EditParentAccount']);

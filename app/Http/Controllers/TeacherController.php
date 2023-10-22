@@ -6,7 +6,6 @@ use App\Http\Requests\teacherRequest;
 use App\Http\Requests\UpdateteacherRequest;
 use App\Models\ClassModel;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -18,7 +17,7 @@ class TeacherController extends Controller
         $data['getRecord']=User::getTeacher();
         $data['header_title']="List Teacher";
         return view('admin.teacher.list',$data);
-        
+
     }
     public function Add()
     {
@@ -30,11 +29,11 @@ class TeacherController extends Controller
     public function Insert(teacherRequest $request)
     {
 
-        
+
         $teacher = new User();
         $teacher->name = trim($request->name);
         $teacher->last_name = trim($request->last_name);
-         
+
         $teacher->password = Hash::make($request->password);
         $teacher->email = trim($request->email);
         $teacher->admission_number = $request->admission_number;
@@ -49,7 +48,7 @@ class TeacherController extends Controller
             $teacher->date_of_birth = $request->date_of_birth;
         }
 
- 
+
 
         if (!empty($request->admission_date)) {
             $teacher->admission_date = $request->admission_date;
@@ -74,7 +73,7 @@ class TeacherController extends Controller
     public function Edit($id)
     {
         $data['getRecord'] = User::getSingle($id);
-        
+
         if (!empty($data['getRecord'])) {
 
             $data['getClass'] = ClassModel::getClass();
@@ -94,7 +93,7 @@ class TeacherController extends Controller
         $teacher->admission_number = $request->admission_number;
         $teacher->mobile_number = $request->mobile_number;
         $teacher->address = $request->address;
-      
+
         if (!empty($request->date_of_birth)) {
             $teacher->date_of_birth = $request->date_of_birth;
         }
@@ -128,7 +127,7 @@ class TeacherController extends Controller
 
         return redirect('admin/teacher/list')->with('success', 'Updated a teacher successfully.');
 }
- 
+
 
     public function Delete($id)
     {
@@ -136,7 +135,7 @@ class TeacherController extends Controller
         $teacher->is_delete=1;
         $teacher->save();
         return redirect('admin/teacher/list')->with('success', 'Successfully Deleted a teacher.');
-        
+
     }
 }
 

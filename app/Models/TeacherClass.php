@@ -39,8 +39,26 @@ static public function AssignTeacherID($teacher_id)
 }
 
 static public function deleteTeacher($class_id)
-{ 
+{
   return self::where('class_id','=',$class_id)->delete();
+
+}
+static public function getTeacherClass($teacher_id)
+{
+    return self::select('class_teacher.*','class.name as class_name','subject.name as subject_name',
+    'subject.type as subject_type')
+    ->join('class','class.id' ,'=','class_teacher.class_id')
+    ->join('subject_class','class.id' ,'=','class_teacher.class_id')
+    ->join('subject','subject.id','=','subject_class.subject_id')
+    ->where('class_teacher.is_delete','=',0)
+    ->where('class_teacher.status','=',0)
+    ->where('subject_class.is_delete','=',0)
+    ->where('subject_class.status','=',0)
+    ->where('subject.is_delete','=',0)
+    ->where('subject.status','=',0)
+    ->where('class_teacher.teacher_id','=',$teacher_id)
+
+        ->get();
 
 }
 }

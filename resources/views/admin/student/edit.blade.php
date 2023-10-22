@@ -96,7 +96,7 @@
                                                     <input type="file" name="profile_picture" class="form-control"
                                                         placeholder="Profile Picture">
                                                         @if(!empty($getRecord->getProfile()))
-                                                        <img src="{{$getRecord->getProfile()}}" 
+                                                        <img src="{{$getRecord->getProfile()}}"
                                                        style="height: :100px; width:100px;">
                                                        @endif
                                                 </div>
@@ -104,12 +104,12 @@
                                                     <label>Class Name</label>
                                                     <select class="form-control" name="class_id" required>
                                                         <option value="">Select Class</option>
-        
+
                                                         @foreach ($getClass as $class)
                                                             <option {{ ($getRecord->class_id==$class->id) ? 'selected' : '' }}
                                                                 value="{{ $class->id }}">{{ $class->name }}</option>
                                                         @endforeach
-        
+
                                                     </select>
                                                 </div>
                                                 <div class="form-group col-md-6">
@@ -142,18 +142,18 @@
                                                         @foreach ($getClass as $class)
                                                             <option {{
                                                              ($getRecord->class_id==$class->id) ?
-                                                             'selected' : '' 
+                                                             'selected' : ''
                                                              }}
                                                                 value="{{ $class->id }}">{{ $class->name }}
                                                             </option>
                                                         @endforeach
                                                     </select>
-                                                </div> 
+                                                </div>
 
                                                 <div class="form-group col-md-6">
                                                     <label>Date Of Birth</label>
                                                     <input type="date" name="date_of_birth" class="form-control"
-                                                        placeholder="Date Of Birth" 
+                                                        placeholder="Date Of Birth"
                                                         value="{{ old('date_of_birth',$getRecord->date_of_birth) }}">
                                                 </div>
 

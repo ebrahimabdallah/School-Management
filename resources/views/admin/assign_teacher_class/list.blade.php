@@ -61,7 +61,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Class Name</th>
-                                    <th>Subject Name</th>
+                                    <th>Teacher Name</th>
                                     <th>Status</th>
                                     <th>Operations</th>
                                 </tr>

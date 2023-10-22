@@ -46,8 +46,8 @@ class User extends Authenticatable
     static function getEmailSingle($email)
     {
         return User::where('email','=',$email)->first();
-    } 
-    
+    }
+
     static function getPerant()
     {
       $return=  self::select('users.*' )
@@ -55,7 +55,7 @@ class User extends Authenticatable
       ->where('users.is_delete', '=', 0);
     if(!empty(Request::get('name')))
     {
-      $return=$return->where('name','like','%'.Request::get('name').'%'); 
+      $return=$return->where('name','like','%'.Request::get('name').'%');
     }
       $return=$return->orderBy('id', 'desc')
       ->paginate(10);
@@ -84,7 +84,7 @@ class User extends Authenticatable
 
      $return=$return->orderBy('id', 'desc')
      ->paginate(10);
-     
+
      return $return;
     }
 
@@ -98,6 +98,8 @@ class User extends Authenticatable
          return $return;
         }
 
+
+        //Student Related Parent
    static public function getMyStudent($parent_id)
    {
     $return =self::select('users.*','class.name as class_name','parent.name as parent_name')
@@ -108,9 +110,19 @@ class User extends Authenticatable
     ->where('users.parent_id','=',$parent_id)
     ->orderBy('users.id','desc')->get();
     return $return ;
-
    }
 
+static public function getTeacherStudents($teacher_id)
+{
+    $return=  self::select('users.*', 'class.name as class_name')
+     ->Join('class', 'class.id', '=', 'users.class_id')
+     ->Join('class_teacher', 'class_teacher.class_id', '=', 'class.id')
+     ->where('class_teacher.teacher_id' ,'=', $teacher_id)
+    ->where('users.user_type', '=', 3)
+    ->where('users.is_delete', '=', 0);
+    $return =$return->orderBy('users.id','desc')->get();
+    return $return;
+}
     static function getStudent()
     {
         $return=  self::select('users.*', 'class.name as class_name','parent.name as parent_name','parent.last_name as parent_last_name')
@@ -118,8 +130,8 @@ class User extends Authenticatable
         ->leftJoin('class', 'class.id', '=', 'users.class_id')
         ->where('users.user_type', '=', 3)
         ->where('users.is_delete', '=', 0);
-      
-      
+
+
         if(!empty(Request::get('name')))
       {
         $return=$return->where('name','like','%'.Request::get('name').'%');
@@ -139,7 +151,7 @@ class User extends Authenticatable
         $return=$return->orderBy('users.id', 'desc')
         ->paginate(10);
         return $return;
-    } 
+    }
 
     public function getProfile()
     {
@@ -150,7 +162,7 @@ class User extends Authenticatable
     else{
         return "";
     }
-    } 
+    }
 
 
 static public function getSearchStudent()
@@ -162,9 +174,9 @@ static public function getSearchStudent()
   ->join('class','class.id','=','users.class_id','left')
   ->where('users.user_type','=',3)
   ->where('users.is_delete','=',0);
- 
- 
- 
+
+
+
   if(!empty(Request::get('id')))
   {
      $return=$return->where('users.id','like','%'.Request::get('id').'%');
@@ -189,7 +201,7 @@ static public function getSearchStudent()
   ->get();
   return $return;
 }
-}    
+}
 
 
     static function getAdmin()
@@ -197,7 +209,7 @@ static public function getSearchStudent()
         $return= self::select('users.*')
         ->where('user_type','=',1)
         ->where('is_delete','=',0);
-      //filter search as admin 
+      //filter search as admin
         if(!empty(Request::get('name')))
         {
            $return=$return->where('name','like','%'.Request::get('name').'%');
@@ -215,14 +227,13 @@ static public function getSearchStudent()
 
         $return=$return->orderby('id','desc')->Paginate(4);
         return $return;
-    } 
+    }
 
-      //End  filter search as admin 
+      //End  filter search as admin
 
 static function getSingle($id)
     {
         return self::find($id);
-    } 
-     
+    }
+
 }
- 
