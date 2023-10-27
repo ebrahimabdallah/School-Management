@@ -11,6 +11,7 @@
 
 ![register](https://github.com/ebrahimabdallah/School-Management/assets/119238955/f62f38d8-e713-4ef6-a512-5a144e9ec34e)
 ![success](https://github.com/ebrahimabdallah/School-Management/assets/119238955/4a334b39-361b-4f70-8374-2ad8489aa9ac)
+![forget](https://github.com/ebrahimabdallah/School-Management/assets/119238955/7ab466fb-bb6f-4779-a80d-aa7be48ec846)
 ![class](https://github.com/ebrahimabdallah/School-Management/assets/119238955/67f8f53e-1de1-4b18-a006-cdbaeee9579a)
 ![paraent](https://github.com/ebrahimabdallah/School-Management/assets/119238955/2dfe2017-67d8-42f2-a8b1-be37589da9a1)
 ![parent(1)](https://github.com/ebrahimabdallah/School-Management/assets/119238955/ee265746-24dc-4a89-ab9a-766313f8d365)
