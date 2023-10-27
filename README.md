@@ -26,7 +26,7 @@
 * Access their child's timetable
 * Access class timetables
 
-4)Student
+4) Student
 
 * Create an email account
 * Access personal timetable
