@@ -62,4 +62,17 @@ class AuthController extends Controller
         Auth::logout();
         return redirect(url(''));
     }
+public function register(Request $request)
+{
+    return view('auth.register');
 }
+
+ public function PostRegister(Request $request)
+ {   
+    $newUser=User::create($request->all());
+    if($newUser){
+   return redirect('/')->with('success','Successfully Resgister');
+ }
+ }
+}
+

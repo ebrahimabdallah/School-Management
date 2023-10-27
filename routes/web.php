@@ -17,12 +17,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [AuthController::class, 'Login'])->name('login');
 Route::post('/login', [AuthController::class, 'AuthLogin']);
 Route::get('/logout', [AuthController::class, 'AuthLogOut']);
+
+Route::get('register', [AuthController::class, 'register']);
+Route::post('register', [AuthController::class, 'PostRegister']);
+
 Route::get('/forgetPassword', [AuthController::class, 'AuthForgetPassword']);
 Route::post('/forgetPassword', [AuthController::class, 'PostForgetPassword']);
   //change password
   Route::get('profile/change-password', [UserController::class, 'ChangePassword']);
   Route::post('profile/change-password', [UserController::class, 'UpdatePassword']);
-Route::get('admin/admin/list', function () {
+  Route::get('admin/admin/list', function () {
     return view('admin.admin.list');
 });
 
