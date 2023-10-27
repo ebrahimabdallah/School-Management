@@ -1,15 +1,6 @@
 # Description
 * The system is designed to manage a school and facilitate communication and relationships among students, teachers, and parents. It aims to streamline the monitoring process for parents and teachers regarding student progress.
   
-# Technology && Tools Used
-* laravel
-* Mysql
-* xammp
-* Git
-* Ajax
-* html
-* css
-* Dasboard AdminElt
 
 # Features
 1) Admin
@@ -43,6 +34,16 @@
 * Take future exams(Future addition)
 * View exam marks(Future addition)
 * Chat with teachers(Future addition)
+
+# Technology && Tools Used
+* laravel
+* Mysql
+* xammp
+* Git
+* Ajax
+* html
+* css
+* Dasboard AdminElt
 
 
 # Documentation
