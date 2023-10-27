@@ -85,4 +85,8 @@
     <!-- AdminLTE App -->
     <script src="../../dist/js/adminlte.min.js"></script>
 </body>
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> 247208adc442bc4ae96e0686f14246f59005a5a1
