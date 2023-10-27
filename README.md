@@ -3,7 +3,7 @@
   
 
 # Features
-1) Admin
+# 1) Admin
 
 * Add teachers, parents, and students
 * Manage system-wide operations (remove, edit, permissions)
@@ -11,7 +11,7 @@
 * Assign teachers to classes
 * Create a class timetable
 
-2) Teacher
+# 2) Teacher
 
 * View assigned subjects
 * View assigned students
@@ -20,13 +20,13 @@
 * Conduct future exams (Future addition)
 * Access student marks (Future addition)
 
-3) Parent
+# 3) Parent
 
 * View subjects of their child
 * Access their child's timetable
 * Access class timetables
 
-4) Student
+# 4) Student
 
 * Create an email account
 * Access personal timetable
