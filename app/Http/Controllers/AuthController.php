@@ -65,8 +65,7 @@ class AuthController extends Controller
 public function register(Request $request)
 {
     return view('auth.register');
-<<<<<<< HEAD
-=======
+ 
 }
 
  public function PostRegister(Request $request)
@@ -76,18 +75,6 @@ public function register(Request $request)
    return redirect('/')->with('success','Successfully Resgister');
  }
  }
-}
-
-
->>>>>>> 247208adc442bc4ae96e0686f14246f59005a5a1
-}
-
- public function PostRegister(Request $request)
- {   
-    $newUser=User::create($request->all());
-    if($newUser){
-   return redirect('/')->with('success','Successfully Resgister');
- }
- }
+  
 }
 

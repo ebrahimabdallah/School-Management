@@ -17,16 +17,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [AuthController::class, 'Login'])->name('login');
 Route::post('/login', [AuthController::class, 'AuthLogin']);
 Route::get('/logout', [AuthController::class, 'AuthLogOut']);
-<<<<<<< HEAD
-
+ 
 Route::get('register', [AuthController::class, 'register']);
 Route::post('register', [AuthController::class, 'PostRegister']);
 
-=======
 Route::get('register', [AuthController::class, 'register']);
 Route::post('register', [AuthController::class, 'PostRegister']);
->>>>>>> 247208adc442bc4ae96e0686f14246f59005a5a1
-Route::get('/forgetPassword', [AuthController::class, 'AuthForgetPassword']);
+ Route::get('/forgetPassword', [AuthController::class, 'AuthForgetPassword']);
 Route::post('/forgetPassword', [AuthController::class, 'PostForgetPassword']);
   //change password
   Route::get('profile/change-password', [UserController::class, 'ChangePassword']);
