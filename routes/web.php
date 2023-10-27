@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [AuthController::class, 'Login'])->name('login');
 Route::post('/login', [AuthController::class, 'AuthLogin']);
 Route::get('/logout', [AuthController::class, 'AuthLogOut']);
+Route::get('register', [AuthController::class, 'register']);
+Route::post('register', [AuthController::class, 'PostRegister']);
 Route::get('/forgetPassword', [AuthController::class, 'AuthForgetPassword']);
 Route::post('/forgetPassword', [AuthController::class, 'PostForgetPassword']);
   //change password
