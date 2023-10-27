@@ -1,11 +1,52 @@
 # Description
+* The system is designed to manage a school and facilitate communication and relationships among students, teachers, and parents. It aims to streamline the monitoring process for parents and teachers regarding student progress.
+  
+# Technology && Tools Used
+* laravel
+* Mysql
+* xammp
+* Git
+* Ajax
+* html
+* css
+* Dasboard AdminElt
 
-# Features 
+# Features
+1) Admin
 
-# Technology Used
+* Add teachers, parents, and students
+* Manage system-wide operations (remove, edit, permissions)
+* Assign subjects and classes
+* Assign teachers to classes
+* Create a class timetable
+
+2) Teacher
+
+* View assigned subjects
+* View assigned students
+* Access class timetables
+* Search for related students
+* Conduct future exams (Future addition)
+* Access student marks (Future addition)
+
+3) Parent
+
+* View subjects of their child
+* Access their child's timetable
+* Access class timetables
+
+4)Student
+
+* Create an email account
+* Access personal timetable
+* View assigned subjects
+* Take future exams(Future addition)
+* View exam marks(Future addition)
+* Chat with teachers(Future addition)
 
 
 # Documentation
+
 
 # Screen Shot
 
